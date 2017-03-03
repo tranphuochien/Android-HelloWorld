@@ -23,7 +23,9 @@
         <activity android:name=".MyCalculator2" />
         <activity android:name=".GuessGame" />
         <activity android:name=".MatchGame" />
-        <activity android:name=".Album"></activity>
+        <activity
+            android:name=".Album"
+            android:configChanges="orientation|screenSize"/>
     </application>
 
 </manifest>

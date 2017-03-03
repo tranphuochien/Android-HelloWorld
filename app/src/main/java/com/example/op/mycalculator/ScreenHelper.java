@@ -1,42 +1,20 @@
 package com.example.op.mycalculator;
 
+import android.content.Context;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Surface;
-import android.view.View;
-import android.widget.GridLayout;
-import android.widget.Toast;
 
-public class RotateScreen extends AppCompatActivity {
+/**
+ * Created by OP on 3/3/2017.
+ */
 
+public class ScreenHelper  extends AppCompatActivity {
     private static final Object TAG = "";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rotate_screen);
-
-        setViewByOrientation();
-
-    }
-
-    private void setViewByOrientation() {
-        int orientation = getScreenOrientation();
-
-        if (orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-            changeUI();
-        } else if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-            Toast.makeText(RotateScreen.this, "Portrait", Toast.LENGTH_SHORT).show();
-    }
-
-    private int getScreenOrientation() {
-        int rotation = getWindowManager().getDefaultDisplay().getRotation();
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
+    public static int getScreenOrientation(DisplayMetrics dm, int rotation) {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         int orientation;
@@ -95,23 +73,4 @@ public class RotateScreen extends AppCompatActivity {
 
         return orientation;
     }
-
-    // Check screen orientation or screen rotate event here
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-
-        setViewByOrientation();
-    }
-
-    private void changeUI() {
-        View avatar = findViewById(R.id.buttonAvatar);
-        GridLayout.LayoutParams paramsAvatar =  (GridLayout.LayoutParams)avatar.getLayoutParams();
-
-        paramsAvatar.rowSpec = GridLayout.spec(1);
-        paramsAvatar.columnSpec = GridLayout.spec(0, 2);
-        paramsAvatar.width = GridLayout.LayoutParams.MATCH_PARENT;
-        avatar.setLayoutParams(paramsAvatar);
-    }
-
 }
