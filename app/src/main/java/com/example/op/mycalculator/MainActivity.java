@@ -49,4 +49,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Album.class);
         startActivity(intent);
     }
+
+    public void onClickButtonAlbum2(View view) {
+        Intent intent = new Intent(MainActivity.this, Album2.class);
+        startActivity(intent);
+    }
 }

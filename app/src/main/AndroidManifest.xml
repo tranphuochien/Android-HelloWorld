@@ -25,6 +25,9 @@
         <activity android:name=".MatchGame" />
         <activity
             android:name=".Album"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".Album2"
             android:configChanges="orientation|screenSize"/>
     </application>
 

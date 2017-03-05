@@ -11,6 +11,8 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MatchGame extends AppCompatActivity {
     ImageView currView = null;
     int currPosition = -1;
@@ -33,7 +35,10 @@ public class MatchGame extends AppCompatActivity {
         setContentView(R.layout.activity_match_game);
 
         GridView gridMatching = (GridView)findViewById(R.id.gridMatching);
-        ImageAdapter imageAdapter = new ImageAdapter(this);
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i < 16; i++)
+            list.add(R.drawable.hidden);
+        ImageAdapter imageAdapter = new ImageAdapter(this, list );
 
         gridMatching.setAdapter(imageAdapter);
 
