@@ -16,6 +16,10 @@ public class ImageAdapter extends BaseAdapter {
     private final Context context;
     private ArrayList<Integer> listIds = new ArrayList<Integer>();
 
+    public ImageAdapter(Context context) {
+        this.context = context;
+    }
+
     public ImageAdapter(Context context, ArrayList<Integer> list) {
         int nImages = list.size();
         for (int i = 0; i < nImages; i++)
@@ -30,7 +34,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
-        return this.getView(i, null, null );
+        return listIds.get(i);
     }
 
     @Override
@@ -38,6 +42,11 @@ public class ImageAdapter extends BaseAdapter {
         return 0;
     }
 
+
+    public ImageView getImage(int pos)
+    {
+        return (ImageView) getItem(pos);
+    }
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
@@ -56,9 +65,9 @@ public class ImageAdapter extends BaseAdapter {
         imageView.setImageBitmap(bmp);
 
         //Just for fun: animation
-        //Animation anim = AnimationUtils.loadAnimation(context.getApplicationContext(),R.anim.shaking);
-        //imageView.startAnimation(anim);
-        //imageView.setImageResource(listIds.get(i));
+        /*Animation anim = AnimationUtils.loadAnimation(context.getApplicationContext(),R.anim.shaking);
+        imageView.startAnimation(anim);
+        imageView.setImageResource(listIds.get(i));*/
 
         return imageView;
     }

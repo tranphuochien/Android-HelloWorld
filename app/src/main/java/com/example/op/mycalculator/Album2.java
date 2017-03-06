@@ -109,9 +109,7 @@ public class Album2 extends AppCompatActivity {
 
         gridAlbum = (GridView) findViewById(R.id.gridAlbum);
 
-
         setViewByOrientation();
-
 
         //Fill data in spinner
         List<String> spinnerArray = new ArrayList<>();
@@ -133,7 +131,6 @@ public class Album2 extends AppCompatActivity {
                 if (item != null) {
                     Toast.makeText(Album2.this, item.toString(),
                             Toast.LENGTH_SHORT).show();
-
                     loadImages(item.toString());
                 }
             }
@@ -143,7 +140,18 @@ public class Album2 extends AppCompatActivity {
             }
         });
 
-        
+        //Event click on item in gridView
+        gridAlbum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent,
+                                    View v, int position, long id){
+                // Send intent to SingleViewActivity
+                Intent i = new Intent(getApplicationContext(), Profile.class);
+                int s = (int) gridAlbum.getAdapter().getItem(position);
+                // Pass image index
+                i.putExtra("id", s);
+                startActivity(i);
+            }
+        });
     }
 
     private void loadImages(String nRequire) {
@@ -152,8 +160,7 @@ public class Album2 extends AppCompatActivity {
 
         try {
             n = Integer.parseInt(nRequire);
-        }catch (Exception e)
-        {
+        }catch (Exception e) {
             n= 0;
         }
 
@@ -162,8 +169,7 @@ public class Album2 extends AppCompatActivity {
 
         ArrayList<Integer> list = new ArrayList<>();
 
-        for (int i = 0; i < n; i++)
-        {
+        for (int i = 0; i < n; i++) {
             list.add(drawableIds[i]);
         }
 

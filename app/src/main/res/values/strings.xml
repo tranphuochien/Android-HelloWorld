@@ -2,11 +2,5 @@
     <string name="app_name">MyCalculator</string>
     <string name="stringCreateButton">Create game</string>
 
-    <string-array name="numImageShow">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
 </resources>
 
