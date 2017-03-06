@@ -90,7 +90,7 @@ public class Album extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        return ScreenHelper.getScreenOrientation(dm, rotation);
+        return ScreenHelper.getInstance().getScreenOrientation(dm, rotation);
     }
 
     @Override

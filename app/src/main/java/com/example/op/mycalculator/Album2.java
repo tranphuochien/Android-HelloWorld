@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Scene;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Animation;
@@ -49,11 +50,9 @@ public class Album2 extends AppCompatActivity {
 
         if (orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
             changeUILandscape();
-        } else if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-        {
+        } else if (orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
             changeUIPortrait();
         }
-
         //doAnimation();
     }
 
@@ -61,14 +60,18 @@ public class Album2 extends AppCompatActivity {
         if (gridAlbum == null)
             gridAlbum = (GridView) findViewById(R.id.gridAlbum);
 
-        gridAlbum.setNumColumns(4);
+        int width = ScreenHelper.getInstance().getWidthScreen(Album2.this);
+
+        gridAlbum.setNumColumns(width / 270);
     }
 
     private void changeUILandscape() {
         if (gridAlbum == null)
             gridAlbum = (GridView) findViewById(R.id.gridAlbum);
 
-        gridAlbum.setNumColumns(7);
+        int width = ScreenHelper.getInstance().getWidthScreen(Album2.this);
+
+        gridAlbum.setNumColumns(width / 270);
     }
 
     private void doAnimation() {
@@ -92,7 +95,7 @@ public class Album2 extends AppCompatActivity {
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        return ScreenHelper.getScreenOrientation(dm, rotation);
+        return ScreenHelper.getInstance().getScreenOrientation(dm, rotation);
     }
 
     @Override

@@ -16,10 +16,6 @@ public class ImageAdapter extends BaseAdapter {
     private final Context context;
     private ArrayList<Integer> listIds = new ArrayList<Integer>();
 
-    public ImageAdapter(Context context) {
-        this.context = context;
-    }
-
     public ImageAdapter(Context context, ArrayList<Integer> list) {
         int nImages = list.size();
         for (int i = 0; i < nImages; i++)
@@ -53,6 +49,9 @@ public class ImageAdapter extends BaseAdapter {
         ImageView imageView;
 
         if (view == null) {
+            //int widthScreen = ScreenHelper.getInstance().getWidthScreen();
+
+
             imageView = new ImageView(this.context);
             imageView.setLayoutParams(new GridView.LayoutParams(250,250));
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);

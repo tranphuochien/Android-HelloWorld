@@ -1,5 +1,6 @@
 package com.example.op.mycalculator;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,20 @@ import android.view.Surface;
 public class ScreenHelper  extends AppCompatActivity {
     private static final Object TAG = "";
 
-    public static int getScreenOrientation(DisplayMetrics dm, int rotation) {
+    private static ScreenHelper mInstance = null;
+
+    private ScreenHelper(){
+    }
+
+    public static ScreenHelper getInstance(){
+        if(mInstance == null)
+        {
+            mInstance = new ScreenHelper();
+        }
+        return mInstance;
+    }
+
+    public int getScreenOrientation(DisplayMetrics dm, int rotation) {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         int orientation;
@@ -72,5 +86,21 @@ public class ScreenHelper  extends AppCompatActivity {
         }
 
         return orientation;
+    }
+
+    public int getWidthScreen(Activity activity)
+    {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        return displayMetrics.widthPixels;
+    }
+
+    public int getHeightScreen()
+    {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        return displayMetrics.heightPixels;
     }
 }
