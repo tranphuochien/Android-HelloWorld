@@ -73,4 +73,12 @@
         android:layout_height="wrap_content"
         android:onClick="onClickButtonAlbum2"
         android:text="Album2" />
+
+    <Button
+        android:id="@+id/buttonMultiClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onClickButtonMultiClick"
+        android:text="MultiClick" />
+
 </GridLayout>
